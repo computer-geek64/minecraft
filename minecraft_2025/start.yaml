@@ -1,0 +1,37 @@
+- name: Start Minecraft
+  hosts: Montreal
+  tasks:
+    - name: Start Minecraft Docker container
+      community.docker.docker_container:
+        name: minecraft-2025
+        image: itzg/minecraft-server:latest
+        pull: true
+        labels:
+          autoheal: 'true'
+          diun.enable: 'true'
+          diun.watch_repo: 'true'
+          diun.notify_on: new;update
+          diun.sort_tags: semver
+          diun.max_tags: '1'
+          diun.include_tags: '^latest$'
+        restart_policy: unless-stopped
+        env:
+          VERSION: 1.21.10
+          WHITELIST: SegFault86,bobster393,btothetwo,fieryice12
+          OPS: SegFault86
+          DIFFICULTY: hard
+          HARDCORE: 'false'
+          SPAWN_PROTECTION: '0'
+          VIEW_DISTANCE: '32'
+          EULA: 'true'
+          MEMORY: 6G
+          ENABLE_RCON: 'false'
+          MOTD: Blocky
+          ICON: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Minecraft-creeper-face.jpg'
+          OVERRIDE_ICON: 'true'
+        volumes:
+          - minecraft-2025:/data
+        published_ports:
+          - 25565:25565
+        keep_volumes: false
+        state: started

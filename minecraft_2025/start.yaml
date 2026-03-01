@@ -17,7 +17,7 @@
         restart_policy: unless-stopped
         env:
           VERSION: 1.21.10
-          WHITELIST: SegFault86,bobster393,btothetwo,fieryice12
+          WHITELIST: SegFault86,bobster393,btothetwo,fieryice12,chillfatguy_,jacobobblehead
           OPS: SegFault86
           DIFFICULTY: hard
           HARDCORE: 'false'

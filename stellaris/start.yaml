@@ -1,0 +1,39 @@
+- name: Start Minecraft
+  hosts: Montreal
+  tasks:
+    - name: Start Minecraft Docker container
+      community.docker.docker_container:
+        name: minecraft-stellaris
+        image: itzg/minecraft-server:java21
+        pull: true
+        labels:
+          autoheal: 'true'
+          diun.enable: 'true'
+          diun.watch_repo: 'true'
+          diun.notify_on: new;update
+          diun.sort_tags: semver
+          diun.max_tags: '1'
+          diun.include_tags: '^latest$'
+        restart_policy: unless-stopped
+        env:
+          VERSION: 1.21.5
+          TYPE: NEOFORGE
+          WHITELIST: SegFault86,bobster393,fieryice12,jacobobblehead
+          OPS: SegFault86
+          DIFFICULTY: normal
+          HARDCORE: 'false'
+          SPAWN_PROTECTION: '0'
+          VIEW_DISTANCE: '32'
+          EULA: 'true'
+          MEMORY: 4G
+          ENABLE_RCON: 'false'
+          CREATE_CONSOLE_IN_PIPE: 'true'
+          MOTD: 'To infinity and beyond!'
+          ICON: 'https://media.forgecdn.net/avatars/1013/852/638538918223512723.png'
+          OVERRIDE_ICON: 'true'
+        volumes:
+          - minecraft-stellaris:/data
+        published_ports:
+          - 25566:25565
+        keep_volumes: false
+        state: started

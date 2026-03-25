@@ -1,0 +1,7 @@
+- name: Stop Minecraft
+  hosts: Chicago
+  tasks:
+    - name: Stop Minecraft Docker container
+      community.docker.docker_container:
+        name: minecraft-nishant
+        state: absent

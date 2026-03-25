@@ -1,0 +1,38 @@
+- name: Start Minecraft
+  hosts: Chicago
+  tasks:
+    - name: Start Minecraft Docker container
+      community.docker.docker_container:
+        name: minecraft-nishant
+        image: itzg/minecraft-server:latest
+        pull: true
+        labels:
+          autoheal: 'true'
+          diun.enable: 'true'
+          diun.watch_repo: 'true'
+          diun.notify_on: new;update
+          diun.sort_tags: semver
+          diun.max_tags: '1'
+          diun.include_tags: '^latest$'
+        restart_policy: unless-stopped
+        env:
+          VERSION: 1.21.11
+          WHITELIST: SegFault86,bobster393,fieryice12,Nishantito
+          OPS: SegFault86
+          DIFFICULTY: normal
+          HARDCORE: 'false'
+          SPAWN_PROTECTION: '0'
+          VIEW_DISTANCE: '32'
+          EULA: 'true'
+          MEMORY: 4G
+          ENABLE_RCON: 'false'
+          CREATE_CONSOLE_IN_PIPE: 'true'
+          MOTD: 'Welcome to the Skindex!'
+          ICON: 'https://harkeraquila.com/wp-content/uploads/2019/03/NishantRavi_KatZhang.jpg'
+          OVERRIDE_ICON: 'true'
+        volumes:
+          - minecraft-nishant:/data
+        published_ports:
+          - 25566:25565
+        keep_volumes: false
+        state: started

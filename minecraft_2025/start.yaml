@@ -16,7 +16,7 @@
           diun.include_tags: '^latest$'
         restart_policy: unless-stopped
         env:
-          VERSION: 1.21.11
+          VERSION: '26.1'
           WHITELIST: SegFault86,bobster393,btothetwo,fieryice12,chillfatguy_,jacobobblehead
           OPS: SegFault86
           DIFFICULTY: hard
@@ -27,7 +27,7 @@
           MEMORY: 6G
           ENABLE_RCON: 'false'
           CREATE_CONSOLE_IN_PIPE: 'true'
-          MOTD: 'Now including spears!'
+          MOTD: 'Cuteness overload!'
           ICON: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Minecraft-creeper-face.jpg'
           OVERRIDE_ICON: 'true'
         volumes:

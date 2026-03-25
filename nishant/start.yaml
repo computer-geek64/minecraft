@@ -16,7 +16,7 @@
           diun.include_tags: '^latest$'
         restart_policy: unless-stopped
         env:
-          VERSION: 1.21.11
+          VERSION: '26.1'
           WHITELIST: SegFault86,bobster393,fieryice12,Nishantito
           OPS: SegFault86
           DIFFICULTY: normal

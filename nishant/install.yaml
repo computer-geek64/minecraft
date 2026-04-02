@@ -18,7 +18,7 @@
 
     - name: Read homelab config
       ansible.builtin.slurp:
-        src: '{{ansible_user_dir}}/.homelab.json'
+        src: '{{ansible_facts["user_dir"]}}/.homelab.json'
       register: homelab_config_file
     - name: Set homelab_config variable
       ansible.builtin.set_fact:
@@ -37,7 +37,7 @@
           - '{{item.source}}'
           - '{{item.config}}'
       with_items:
-      - {name: minecraft_nishant, host: '{{ansible_hostname}}', source: github/computer-geek64/minecraft/master/nishant, config: null}
+      - {name: minecraft_nishant, host: '{{ansible_facts["hostname"]}}', source: github/computer-geek64/minecraft/master/nishant, config: null}
     - name: Insert into Postgres table service_port
       community.postgresql.postgresql_query:
         login_host: '{{homelab_config.database.host}}'

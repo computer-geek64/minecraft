@@ -16,7 +16,7 @@
 
     - name: Read homelab config
       ansible.builtin.slurp:
-        src: '{{ansible_user_dir}}/.homelab.json'
+        src: '{{ansible_facts["user_dir"]}}/.homelab.json'
       register: homelab_config_file
     - name: Set homelab_config variable
       ansible.builtin.set_fact:

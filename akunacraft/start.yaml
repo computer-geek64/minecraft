@@ -31,7 +31,7 @@
           ICON: 'https://media.licdn.com/dms/image/v2/C4E0BAQGaxHYyl3mOAg/company-logo_200_200/company-logo_200_200/0/1631345113926?e=2147483647&v=beta&t=aEHK7jDfaltFiwidIK-g6vlaibeCQvpk7pbtQtcjVL0'
           OVERRIDE_ICON: 'true'
         volumes:
-          - minecraft-2025:/data
+          - akunacraft:/data
         published_ports:
           - 25565:25565
         keep_volumes: false

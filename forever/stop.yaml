@@ -1,5 +1,5 @@
 - name: Stop Minecraft
-  hosts: Chicago
+  hosts: Montreal
   tasks:
     - name: Send server shutdown notice
       community.docker.docker_container_exec:

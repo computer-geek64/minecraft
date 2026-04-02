@@ -1,5 +1,5 @@
 - name: Start Minecraft
-  hosts: Chicago
+  hosts: Montreal
   tasks:
     - name: Start Minecraft Docker container
       community.docker.docker_container:
@@ -27,12 +27,12 @@
           MEMORY: 4G
           ENABLE_RCON: 'false'
           CREATE_CONSOLE_IN_PIPE: 'true'
-          MOTD: 'Forever mine. Forever yours.'
+          MOTD: 'Forever §lYours§r. Forever §lMine§r. Forever §lCraft§r.'
           ICON: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/Minecraft-creeper-face.jpg'
           OVERRIDE_ICON: 'true'
         volumes:
           - minecraft-forever:/data
         published_ports:
-          - 25567:25565
+          - 25565:25565
         keep_volumes: false
         state: started

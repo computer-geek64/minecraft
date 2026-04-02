@@ -2,7 +2,7 @@
   ansible.builtin.import_playbook: stop.yaml
 
 - name: Uninstall Minecraft
-  hosts: Chicago
+  hosts: Montreal
   tasks:
     - name: Remove Minecraft data Docker volume
       community.docker.docker_volume:

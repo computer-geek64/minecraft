@@ -1,5 +1,5 @@
 - name: Install Minecraft
-  hosts: Chicago
+  hosts: Montreal
   tasks:
     - name: Create Minecraft data Docker volume directory
       become: true
@@ -52,7 +52,7 @@
           - '{{item.reverse_proxy}}'
           - '{{item.reverse_proxy_port}}'
       with_items:
-        - {service: minecraft_forever, port: 25567, domain: null, reverse_proxy: null, reverse_proxy_port: null}
+        - {service: minecraft_forever, port: 25565, domain: null, reverse_proxy: null, reverse_proxy_port: null}
     - name: Insert into Postgres table service_data
       community.postgresql.postgresql_query:
         login_host: '{{homelab_config.database.host}}'

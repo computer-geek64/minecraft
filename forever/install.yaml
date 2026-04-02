@@ -1,19 +1,19 @@
 - name: Install Minecraft
-  hosts: Montreal
+  hosts: Chicago
   tasks:
     - name: Create Minecraft data Docker volume directory
       become: true
       ansible.builtin.file:
-        path: /data/minecraft-2025
+        path: /data/minecraft-forever
         state: directory
     - name: Create Minecraft data Docker volume
       community.docker.docker_volume:
-        volume_name: minecraft-2025
+        volume_name: minecraft-forever
         driver: local
         driver_options:
           type: none
           o: bind
-          device: /data/minecraft-2025
+          device: /data/minecraft-forever
         state: present
 
     - name: Read homelab config
@@ -37,7 +37,7 @@
           - '{{item.source}}'
           - '{{item.config}}'
       with_items:
-      - {name: minecraft_2025, host: '{{ansible_hostname}}', source: github/computer-geek64/minecraft/master/minecraft_2025, config: null}
+        - {name: minecraft_forever, host: '{{ansible_hostname}}', source: github/computer-geek64/minecraft/master/minecraft_forever, config: null}
     - name: Insert into Postgres table service_port
       community.postgresql.postgresql_query:
         login_host: '{{homelab_config.database.host}}'
@@ -52,7 +52,7 @@
           - '{{item.reverse_proxy}}'
           - '{{item.reverse_proxy_port}}'
       with_items:
-        - {service: minecraft_2025, port: 25565, domain: null, reverse_proxy: null, reverse_proxy_port: null}
+        - {service: minecraft_forever, port: 25567, domain: null, reverse_proxy: null, reverse_proxy_port: null}
     - name: Insert into Postgres table service_data
       community.postgresql.postgresql_query:
         login_host: '{{homelab_config.database.host}}'
@@ -66,4 +66,4 @@
           - '{{item.storage_type}}'
           - '{{item.source}}'
       with_items:
-        - {service: minecraft_2025, data_name: data, storage_type: docker, source: minecraft-2025}
+        - {service: minecraft_forever, data_name: data, storage_type: docker, source: minecraft-forever}

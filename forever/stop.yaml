@@ -1,16 +1,16 @@
 - name: Stop Minecraft
-  hosts: Montreal
+  hosts: Chicago
   tasks:
     - name: Send server shutdown notice
       community.docker.docker_container_exec:
-        container: minecraft-2025
+        container: minecraft-forever
         user: 1000
-        command: mc-send-to-console title @a actionbar "Server shutting down in 10 seconds"
+        command: 'mc-send-to-console title @a actionbar "Server shutting down in 10 seconds"'
       ignore_errors: true
     - name: Wait 10 seconds
       ansible.builtin.pause:
         seconds: 10
     - name: Stop Minecraft Docker container
       community.docker.docker_container:
-        name: minecraft-2025
+        name: minecraft-forever
         state: absent

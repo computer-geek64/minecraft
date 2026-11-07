@@ -13,7 +13,7 @@
           diun.notify_on: new;update
           diun.sort_tags: semver
           diun.max_tags: '1'
-          diun.include_tags: '^latest$'
+          diun.include_tags: '^java21$'
         restart_policy: unless-stopped
         env:
           VERSION: 1.21.5

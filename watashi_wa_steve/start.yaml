@@ -1,0 +1,44 @@
+- name: Start Minecraft
+  hosts: Montreal
+  tasks:
+    - name: Start Minecraft Docker container
+      community.docker.docker_container:
+        name: minecraft-watashi-wa-steve
+        image: itzg/minecraft-server:java25
+        pull: true
+        labels:
+          autoheal: 'true'
+          diun.enable: 'true'
+          diun.watch_repo: 'true'
+          diun.notify_on: new;update
+          diun.sort_tags: semver
+          diun.max_tags: '1'
+          diun.include_tags: '^java25$'
+        restart_policy: unless-stopped
+        env:
+          VERSION: '26.3'
+          TYPE: FABRIC
+          WHITELIST: SegFault86,bobster393,fieryice12,chillfatguy_
+          OPS: SegFault86
+          DIFFICULTY: normal
+          HARDCORE: 'false'
+          SPAWN_PROTECTION: '0'
+          VIEW_DISTANCE: '32'
+          EULA: 'true'
+          MEMORY: 4G
+          ENABLE_RCON: 'false'
+          CREATE_CONSOLE_IN_PIPE: 'true'
+          MOTD: 'Watashi wa\n§l§bSTEVE§r'
+          ICON: 'https://cdn.modrinth.com/data/8oi3bsk5/34c751cc804839ed3c1d9f21dfd53d98368fedfc.png'
+          OVERRIDE_ICON: 'true'
+          MODRINTH_PROJECTS: |
+            terralith
+            hostile-mobs-improve-over-time
+          MODRINTH_DOWNLOAD_DEPENDENCIES: required
+          # MODRINTH_ALLOWED_VERSION_TYPE: beta
+        volumes:
+          - minecraft-watashi-wa-steve:/data
+        published_ports:
+          - 25568:25565
+        keep_volumes: false
+        state: started

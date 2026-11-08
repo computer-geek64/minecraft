@@ -14,6 +14,7 @@
           diun.sort_tags: semver
           diun.max_tags: '1'
           diun.include_tags: '^java25$'
+          mc-router.host: 'genesis.minecraftservers.dev'
         restart_policy: unless-stopped
         env:
           VERSION: '26.3'
@@ -39,7 +40,5 @@
           MODRINTH_ALLOWED_VERSION_TYPE: beta
         volumes:
           - minecraft-genesis:/data
-        published_ports:
-          - 25567:25565
         keep_volumes: false
         state: started

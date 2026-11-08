@@ -1,11 +1,13 @@
-Chicago:
-  hosts:
-    Lothlorien:
+Minecraft:
+  children:
+    Chicago:
+      hosts:
+        Lothlorien:
 
-Orlando:
-  hosts:
-    Rivendell:
+    Orlando:
+      hosts:
+        Rivendell:
 
-Montreal:
-  hosts:
-    Gondolin:
+    Montreal:
+      hosts:
+        Gondolin:

@@ -14,6 +14,7 @@
           diun.sort_tags: semver
           diun.max_tags: '1'
           diun.include_tags: '^java25$'
+          mc-router.host: 'watashi-wa-steve.minecraftservers.dev'
         restart_policy: unless-stopped
         env:
           VERSION: '26.3'
@@ -35,10 +36,7 @@
             terralith
             hostile-mobs-improve-over-time
           MODRINTH_DOWNLOAD_DEPENDENCIES: required
-          # MODRINTH_ALLOWED_VERSION_TYPE: beta
         volumes:
           - minecraft-watashi-wa-steve:/data
-        published_ports:
-          - 25568:25565
         keep_volumes: false
         state: started

@@ -31,15 +31,6 @@
         query: 'DELETE FROM service_data WHERE service = %s;'
         positional_args:
           - akunacraft
-    - name: Delete from Postgres table service_port
-      community.postgresql.postgresql_query:
-        login_host: '{{homelab_config.database.host}}'
-        login_user: '{{homelab_config.database.user}}'
-        login_password: '{{homelab_config.database.password}}'
-        login_db: '{{homelab_config.database.name}}'
-        query: 'DELETE FROM service_port WHERE service = %s;'
-        positional_args:
-          - akunacraft
     - name: Delete from Postgres table service
       community.postgresql.postgresql_query:
         login_host: '{{homelab_config.database.host}}'

@@ -1,0 +1,7 @@
+- name: Stop Minecraft Router
+  hosts: Minecraft
+  tasks:
+    - name: Stop Minecraft Router Docker container
+      community.docker.docker_container:
+        name: mc-router
+        state: absent

@@ -14,6 +14,7 @@
           diun.sort_tags: semver
           diun.max_tags: '1'
           diun.include_tags: '^latest$'
+          mc-router.host: 'nishant.minecraftservers.dev'
         restart_policy: unless-stopped
         env:
           VERSION: '26.1'
@@ -32,7 +33,5 @@
           OVERRIDE_ICON: 'true'
         volumes:
           - minecraft-nishant:/data
-        published_ports:
-          - 25566:25565
         keep_volumes: false
         state: started

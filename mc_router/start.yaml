@@ -1,0 +1,34 @@
+- name: Start Minecraft Router
+  hosts: Minecraft
+  tasks:
+    - name: Get info for the docker group
+      ansible.builtin.getent:
+        database: group
+        key: docker
+
+    - name: Start Minecraft Router Docker container
+      community.docker.docker_container:
+        name: mc-router
+        image: itzg/mc-router:latest
+        pull: true
+        labels:
+          autoheal: 'true'
+          diun.enable: 'true'
+          diun.watch_repo: 'true'
+          diun.notify_on: new;update
+          diun.sort_tags: semver
+          diun.max_tags: '1'
+          diun.include_tags: '^latest$'
+        restart_policy: unless-stopped
+        groups:
+          - '{{ansible_facts.getent_group["docker"][1]}}'
+        env:
+          IN_DOCKER: 'true'
+          PORT: '25565'
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+        # published_ports:
+        #   - 25565:25565
+        network_mode: host
+        keep_volumes: false
+        state: started

@@ -19,7 +19,7 @@
         env:
           VERSION: '26.3'
           TYPE: FABRIC
-          WHITELIST: SegFault86,bobster393,fieryice12,chillfatguy_
+          WHITELIST: SegFault86,bobster393,fieryice12,chillfatguy_,saiba1
           OPS: SegFault86
           DIFFICULTY: normal
           HARDCORE: 'false'
